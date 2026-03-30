@@ -19,7 +19,7 @@ pipeline{
         }
         stage('4. Run the Image Containerize'){
             steps{
-                bat 'docker run -d -p 8080:80 --name mycount myweb'
+                bat 'docker run -d -p 8090:80 --name mycount myweb'
             }
         }
     }

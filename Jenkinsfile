@@ -3,12 +3,23 @@ pipeline{
     stages{
         stage('1. checkout'){
             steps{
-                git ''
+                git 'https://github.com/aslin-123/DevopsPract.git'
             }
         }
         stage('2. Build Images'){
             steps{
-                
+                bat 'docker build -t myweb .'
+            }
+        }
+        stage('3. stop all containers'){
+            steps{
+                bat 'docker stop mycount || exit 0'
+                bat 'docker rm mycount || exit 0'
+            }
+        }
+        stage('4. Run the Image Containerize'){
+            steps{
+                bat 'docker run -d -p 8080:80 --name mycount myweb'
             }
         }
     }
